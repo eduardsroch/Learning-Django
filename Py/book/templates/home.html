@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<style>
+  :root {
+      --bs-secondary-color: 030000;
+      --bs-secondary-color-rgb: 0, 0, 0;
+        }
+.container {
+  height: 100vh;
+  width: 100vh;
+  background-color: rgba(0, 0, 0, 0.89);
+  color: white;
+  padding: 10px;
+  margin: auto ;
+  border-radius: 10px;
+}
+
+.topo-site  {
+  background-color: black;
+  padding: 30px;
+}
+
+
+</style>
+<div class="topo-site">
+  {% load static %}
+  <img src="{% static 'logo.png' %}" width="200" height="150" title="Logo">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<nav>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">HOME</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'autores' %}">AUTORES</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="titulos.html">TÍTULOS</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  MAIS
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'fale' %}">FALE CONOSCO</a></li>
+                  <li><a class="dropdown-item" href="professor.html">PROFESSOR</a></li>
+                  <li><a class="dropdown-item" href="imprensa.html">IMPRENSA</a></li>
+                  <li><a class="dropdown-item" href="sobre.html">SOBRE A EDITORA</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="BUSQUE AQUI SEU PRODUTO" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">BUSCAR</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+</nav>
+
+<div class="container">
+<h1>Store</h1>
+
+<ul>
+    {% for l in livro %}
+        <li>{{ l }}</li>
+    {% empty %}
+        <li>Nenhum livro cadastrado</li>
+    {% endfor %}
+</ul>
+{% endblock conteudo %}
+</div>
+</main>
+

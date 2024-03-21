@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<style>
+
+.topo-site  {
+  background-color: black;
+  padding: 30px;
+}
+
+.mb-3 {
+    margin: 50px;
+    
+}
+
+</style>
+
+<div class="topo-site">
+  {% load static %}
+  <img src="{% static 'logo.png' %}" width="200" height="150" title="Logo">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<nav>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">HOME</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'autores' %}">AUTORES</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="titulos.html">TÍTULOS</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  MAIS
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'fale' %}">FALE CONOSCO</a></li>
+                  <li><a class="dropdown-item" href="professor.html">PROFESSOR</a></li>
+                  <li><a class="dropdown-item" href="imprensa.html">IMPRENSA</a></li>
+                  <li><a class="dropdown-item" href="sobre.html">SOBRE A EDITORA</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="BUSQUE AQUI SEU PRODUTO" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">BUSCAR</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+</nav>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Mensagem</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+<hr>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Endereço postal</th>
+        <th scope="col">Vendas</th>
+        <th scope="col">Contato</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td>Editora 34 Ltda. <br>
+            Rua Hungria, 592 - Jardim Europa <br>
+            São Paulo - SP - Brasil <br>
+            CEP 01455-000</td>
+        <td>vendas@editora34.com.br <br>
+            Assessoria de imprensa: imprensa@editora34.com.br <br>
+            
+            Atendimento ao professor: professor@editora34.com.br <br>
+            
+            Site/Pedidos: site@editora34.com.br</td>
+        <td>Tel (11) 3811-6777 <br>
+            Fax (11) 3811-6779 <br>
+            WhatsApp (11) 97319-4785</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock conteudo %}
+
+
+</main>
+
