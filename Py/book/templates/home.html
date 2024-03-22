@@ -7,7 +7,7 @@
       --bs-secondary-color: 030000;
       --bs-secondary-color-rgb: 0, 0, 0;
         }
-.container {
+.container-livros{
   height: 100vh;
   width: 100vh;
   color: bla;
@@ -22,17 +22,21 @@
 
 </style>
 
-<div class="container">
-<h1>Store</h1>
+{% for l in livro %}
+<div class="card mx-3 mb-3" style="width: 18rem;">
+    {% load static %}
+    <img src="{% static '' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"> {{l.titulo}} </h5>
+      <p class="card-text"> {{l.descricao}}</p>
+      <a href="#" class="btn btn-secondary float-end">{{l.preco}}</a>
+    </div>
+  </div>
+{% empty %}
+  <div> Ainda não há livros cadastrados. </div>
+{% endfor %}
 
-<ul>
-    {% for l in livro %}
-        <li>{{ l }}</li>
-    {% empty %}
-        <li>Nenhum livro cadastrado</li>
-    {% endfor %}
-</ul>
 {% endblock conteudo %}
-</div>
+
 </main>
 
