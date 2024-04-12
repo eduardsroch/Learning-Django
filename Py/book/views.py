@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from book.models import Livro 
+from book.forms import LivroForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
 def home(request):
@@ -14,7 +17,17 @@ def fale(request):
     return render(request, 'fale.html')
 
 def imprensa(request):
-    return render(request, 'imprensa.html')
+
+    if request.method != 'POST':
+        form = LivroForm()
+    else:
+        form = LivroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('home'))
+
+    context = {'form':form}
+    return render(request, 'imprensa.html',context)
 
 def sobre(request):
     return render(request, 'sobre.html')

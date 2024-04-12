@@ -9,7 +9,8 @@ class Livro (models.Model):
     edicao = models.IntegerField()
     paginas = models.IntegerField()
     preco = models.DecimalField(max_digits=5, decimal_places=2)
-    estoque = models.IntegerField()    
+    estoque = models.IntegerField()
+    imagem = models.CharField(null=True, max_length=50)    
     def __str__(self):
         return self.titulo
     
