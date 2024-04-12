@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<style>
+  :root {
+      --btn-secondary-color: black;
+        }
+.container-livros{
+  height: 100%;
+  width: 100%;
+  color: black;
+  padding: 70px;
+}
+
+.topo-site  {
+  background-color: black;
+  padding: 30px;
+  align-i
+}
+
+.card {
+  flex-wrap: wrap;
+  display: inline-block;
+}
+
+.btn{
+  text-align: center;
+}
+</style>
+<div class="container-livros">
+{% for l in livro  %}
+
+
+<div class="card mx-3 mb-3" style="width: 18rem;">
+    {% load static %}
+    <img src="{% static l.imagem %}" class="card-img-top" alt="..." height="350px">
+    <div class="card-body">
+      <h5 class="card-title"> {{l.titulo}} </h5>
+      <p class="card-text"> <i>Autor</i> {{l.autor}}</p>
+      <p class="class-descricao">{{d.descricao}}</p>
+      <p class="card-text"> <i>Editora</i> {{l.editora}}</p>
+      <a href="#" class="btn btn-secondary float-top">{{l.preco}}</a>
+    </div>
+  </div>
+{% empty %}
+  <div> Ainda não há livros cadastrados. </div>
+{% endfor %}
+</div>
+{% endblock conteudo %}
+
+</main>
+

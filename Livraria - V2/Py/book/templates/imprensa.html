@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<style>
+    .topo-site  {
+  background-color: black;
+  padding: 30px;
+}
+
+.mb-3 {
+    margin: 50px;
+    
+}
+</style>
+
+<main>
+<h1>CADASTRO DE LIVROS</h1><br>
+    <form action="{% url 'imprensa' %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <br>
+        <button>ADICIONAR LIVRO</button>
+        <br>
+    </form>
+
+    {% endblock conteudo %}
+</main>
