@@ -1,23 +1,48 @@
 from django.db import models
 
-# Create your models here.
-class Livro (models.Model):
-    titulo = models.CharField(max_length=100)
+class Cliente(models.Model):
+    cliente_id = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=100)
+    #quebra
+    endereco = models.CharField(max_length=200)
+    #separa
+    telefone = models.CharField(max_length=20)
+    email = models.EmailField()
+    #senha, ...
+
+    def __str__(self):
+        return self.nome
+
+class Livro(models.Model):
+    livro_id = models.AutoField(primary_key=True)
+    titulo = models.CharField(max_length=200)
+    #quebra
     autor = models.CharField(max_length=100)
+    #quebra
     editora = models.CharField(max_length=100)
-    ano = models.IntegerField()
-    edicao = models.IntegerField()
-    paginas = models.IntegerField()
-    preco = models.DecimalField(max_digits=5, decimal_places=2)
-    estoque = models.IntegerField()
-    imagem = models.CharField(null=True, max_length=50)    
+    #quebra
+    genero = models.CharField(max_length=50)
+    preco = models.DecimalField(max_digits=10, decimal_places=2)
+    imagem = models.TextField(max_length=5000)
+    descricao = models.TextField(max_length=5000)
+
     def __str__(self):
         return self.titulo
-    
-class Descricao(models.Model):
-    livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
-    descricao = models.TextField()
+
+class Venda(models.Model):
+    venda_id = models.AutoField(primary_key=True)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    data_venda = models.DateField()
+    valor_total = models.DecimalField(max_digits=10, decimal_places=2)
+
     def __str__(self):
-        return self.descricao
-    
-    
+        return f"Venda {self.venda_id} - Cliente: {self.cliente.nome}"
+
+class ItemVenda(models.Model):
+    itemvenda_id = models.AutoField(primary_key=True)
+    venda = models.ForeignKey(Venda, on_delete=models.CASCADE)
+    livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+    quantidade = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"Item {self.itemvenda_id} - Livro: {self.livro.titulo}, Quantidade: {self.quantidade}"

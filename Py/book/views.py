@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from book.models import Livro 
+from book.models import Venda
+from book.models import Cliente
+from book.models import ItemVenda
 from book.forms import LivroForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 # Create your views here.
 def home(request):
-    livro = Livro.objects.order_by('id')
+    livro = Livro.objects.order_by('livro_id')
     context = {'livro':livro}
     return render(request, 'home.html', context)
 
