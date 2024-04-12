@@ -37,3 +37,6 @@ def titulos(request):
 
 def professor(request):
     return render(request, 'professor.html')
+
+def abouteditora(request):
+    return render(request, 'abouteditora.html')
