@@ -1,6 +1,10 @@
 .topo-site  {
   background-color: black;
   padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
 }
 
 .mb-3 {
