@@ -32,11 +32,24 @@
     margin-bottom: 20px;
 }
 
+.btn-group {
+    align-items: right;
+    padding: 10px;
+    float: right;
+}
+
 </style>
 
 <main>
 <div id="sobre-editora">
-    <h4 id="titulo-sobre"> SOBRE A EDITORA</h4>
+
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <a href="{% url 'abouteditora'%}"><button type="button" class="btn btn-danger">Language: en</button></a>
+        <a href="{% url 'sobre'%}"><button type="button" class="btn btn-warning">Idioma: pt-br</button></a>
+      </div>
+      <br>
+      <br>
+      <h4 id="titulo-sobre"> SOBRE A EDITORA</h4>
     <p>
         Fundada em 1992 com o lançamento de O que é a filosofia?, de Gilles Deleuze e Félix Guattari, a Editora 34 possui hoje mais de 500 títulos em seu catálogo, que abrange as áreas de Ficção, Filosofia, Arte, Teoria Literária, Ciências Sociais, História, Psicologia e Psicanálise, Economia, Música, Poesia e Literatura Infanto-Juvenil, combinando textos clássicos e de referência com obras de ponta sobre temas contemporâneos.
 
