@@ -1,0 +1,23 @@
+from django.db import models
+
+# Create your models here.
+class Livro (models.Model):
+    titulo = models.CharField(max_length=100)
+    autor = models.CharField(max_length=100)
+    editora = models.CharField(max_length=100)
+    ano = models.IntegerField()
+    edicao = models.IntegerField()
+    paginas = models.IntegerField()
+    preco = models.DecimalField(max_digits=5, decimal_places=2)
+    estoque = models.IntegerField()
+    imagem = models.CharField(null=True, max_length=50)    
+    def __str__(self):
+        return self.titulo
+    
+class Descricao(models.Model):
+    livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+    descricao = models.TextField()
+    def __str__(self):
+        return self.descricao
+    
+    
