@@ -36,6 +36,9 @@
     align-items: right;
     padding: 10px;
     float: right;
+    display: flex;
+    display: inline-block;
+    justify-content: space-between;
 }
 
 </style>
@@ -44,8 +47,8 @@
 <div id="sobre-editora">
     
     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-        <a href="{% url 'abouteditora'%}"><button type="button" class="btn btn-danger">Language: en</button></a>
-        <a href="{% url 'sobre'%}"><button type="button" class="btn btn-warning">Idioma: pt-br</button></a>
+        <a href="{% url 'abouteditora'%}"><button type="button" class="btn btn-primary">Language: en</button></a>
+        <a href="{% url 'sobre'%}"><button type="button" class="btn btn-secondary">Idioma: pt-br</button></a>
       </div>
       <br>
       <br>
