@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Bairro(models.Model):
     bairro_id = models.AutoField(primary_key=True)
     bairro = models.CharField(max_length=100)
