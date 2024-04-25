@@ -10,4 +10,6 @@ urlpatterns = [
     path('titulos/', views.titulos, name='titulos'),
     path('professor/', views.professor, name='professor'),
     path('abouteditora/', views.abouteditora, name='abouteditora'),
+    path('form/', views.form, name='form'),
+    path('carrinho/<id>', views.carrinho, name='carrinho'),
 ]

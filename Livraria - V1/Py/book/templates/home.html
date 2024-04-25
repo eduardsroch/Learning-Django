@@ -45,11 +45,9 @@
     <div class="card-body">
       <h5 class="card-title"> {{l.titulo}} </h5>
       <p class="card-text"> <i>Autor</i> {{l.autor}}</p>
-      <p class="class-descricao">{{d.descricao}}</p>
       <p class="card-text"> <i>Editora</i> {{l.editora}}</p>
       <h5>R${{l.preco}}</h5>
-      <a href="#" class="btn btn-primary float-top">ADICONAR AO CARRINHO</a>
-      <a href="#" class="btn btn-primary float-top">COMPRAR AGORA</a>
+      <a href="{% url 'carrinho' l.livro_id %}" class="btn btn-primary float-top">COMPRAR AGORA</a>
 
 
     </div>

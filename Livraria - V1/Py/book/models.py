@@ -49,7 +49,6 @@ class Livro(models.Model):
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     imagem = models.TextField(max_length=5000)
     descricao = models.TextField(max_length=5000)
-
     def __str__(self):
         return self.titulo
 

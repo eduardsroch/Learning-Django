@@ -18,7 +18,7 @@ def autores(request):
 def fale(request):
     return render(request, 'fale.html')
 
-def imprensa(request):
+def form(request):
 
     if request.method != 'POST':
         form = LivroForm()
@@ -29,7 +29,7 @@ def imprensa(request):
             return HttpResponseRedirect(reverse('home'))
 
     context = {'form':form}
-    return render(request, 'imprensa.html',context)
+    return render(request, 'form.html',context)
 
 def sobre(request):
     return render(request, 'sobre.html')
@@ -44,3 +44,11 @@ def professor(request):
 
 def abouteditora(request):
     return render(request, 'abouteditora.html')
+
+def imprensa(request):
+    return render(request, 'imprensa.html')
+
+def carrinho (request, id):
+    livro = Livro.objects.get(livro_id=id)
+    context = {'livro':livro}
+    return render(request,'carrinho.html',context)

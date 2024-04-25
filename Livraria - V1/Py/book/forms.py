@@ -1,13 +1,41 @@
 from django import forms
 from book.models import Livro
-from book.models import Cliente
-from book.models import Venda
-from book.models import ItemVenda
+from django.forms.widgets import *
 
-
-class LivroForm(forms.ModelForm):
+class LivroForm (forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ['titulo', 'autor', 'editora', 'genero', 'preco', 'imagem', 'descricao']
-        labels = {'titulo':'Título', 'autor':'Autor', 'editora':'Editora', 'genero':'Gênero', 'preco':'Preço', 'imagem':'Imagem', 'descricao':'Descrição'}
-        
+        fields = ['titulo','preco','descricao','imagem','editora','autor','genero']
+        labels = {'preco':"Preço"}
+        widgets = {'imagem':TextInput(),'descricao':TextInput()}
+
+    def __init__ (self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['titulo'].widget.attrs.update(
+            {'placeholder':'Titulo do Livro',
+            'class' : 'form-control'}
+        )
+        self.fields['preco'].widget.attrs.update(
+            {'placeholder':'Preço',
+            'class' : 'form-control'}
+        )
+        self.fields['descricao'].widget.attrs.update(
+            {'placeholder':'Descrição',
+            'class' : 'form-control'}
+        )
+        self.fields['imagem'].widget.attrs.update(
+            {'placeholder':'Nome do arquivo de imagem',
+            'class' : 'form-control'}
+        )
+        self.fields['editora'].widget.attrs.update(
+            {'placeholder':'Editora do Livro',
+            'class' : 'form-control'}
+        )
+        self.fields['autor'].widget.attrs.update(
+            {'placeholder':'Autor do Livro',
+            'class' : 'form-control'}
+        )
+        self.fields['genero'].widget.attrs.update(
+            {'placeholder':'Gênero do Livro',
+            'class' : 'form-control'}
+        )
