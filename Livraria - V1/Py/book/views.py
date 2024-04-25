@@ -52,3 +52,8 @@ def carrinho (request, id):
     livro = Livro.objects.get(livro_id=id)
     context = {'livro':livro}
     return render(request,'carrinho.html',context)
+
+def busca(request):
+    Livro = request.GET.get('id', '')
+    livros = Livro.objects.filter(livro_id=id)
+    return render(request, 'busca.html', {'livros': livros})

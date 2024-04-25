@@ -12,4 +12,5 @@ urlpatterns = [
     path('abouteditora/', views.abouteditora, name='abouteditora'),
     path('form/', views.form, name='form'),
     path('carrinho/<id>', views.carrinho, name='carrinho'),
+    path('busca/', views.busca, name='busca'),
 ]
