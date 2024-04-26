@@ -4,21 +4,27 @@
 
 <style>
 
-.container-autor{
+.container-livro{
+  display: flex;
+  flex-wrap: wrap;
   height: 100%;
   width: 100%;
   color: black;
-  padding: 70px;
+  padding: 20px;
+  margin-bottom: 140px;
 }
 
 .card-text{
-  font-size: 18px;
+  font-size: 12px;
 }
 
 </style>
-<div class="container-autor">
+<div class="container-livro">
 {% for t in livro  %}
-<div class="card mx-3 mb-3" style="width: 12rem;">
+
+<div class="card mx-3 mb-3" style="width: 7rem;">
+  {% load static %}
+    <img src="{% static t.imagem %}" class="card-img-top" alt="..." height="110px">
     <div class="card-body">
       <h4 class="card-text"> Titulo {{t.titulo}}</h4>
     </div>

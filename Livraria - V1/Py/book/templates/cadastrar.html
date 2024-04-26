@@ -5,13 +5,15 @@
 <style>
 .formulario {
     display: flex;
-    margin: 0 auto;
-    width: 100%;
+    flex-wrap: wrap;
+    margin: auto;
+    align-items: center;
+    width: 400px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    background-color: #000000;
-    height: 100%;
+    background-color: #ffffff;
+    height: 30%;
     margin-bottom: 20%;
 }
 
@@ -32,21 +34,29 @@
 
 }
 </style>
-<h1 id="titulo">Login</h1><br>
-{% if user.is_authenticated %}
-BEM VINDO {{ user.username }}
-{% endif %}
+
+<h1 id="titulo">CADASTRO USUÁRIO</h1><br>
 <div class="formulario">
-<form action="{% url 'login' %}" method="post">
+<form action="{% url 'cadastrar' %}" method="post">
     {% csrf_token %}
-    {{formlogin.errors}}
     <div class="row gap-2">
         <div class="col-6 col-md-4 col-xl-3">
-            {{LoginForm.username}}
+            {{UsuarioForm.first_name}}
         </div>
         <div class="col-6 col-md-4 col-xl-3">
-            {{LoginForm.password}}
+            {{UsuarioForm.last_name}}
         </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{UsuarioForm.username}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{UsuarioForm.email}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{UsuarioForm.password}}
+        </div>
+        <div class = "d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
     </div>
     <br> 
 </form>

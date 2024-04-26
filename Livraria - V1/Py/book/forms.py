@@ -55,3 +55,26 @@ class LoginForm (forms.ModelForm):
         self.fields['password'].widget.attrs.update(
             {'placeholder':'Senha',
              'class' : 'form-control',})
+
+class UsuarioForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username','password', 'email','first_name','last_name']
+        widgets = {'email':EmailInput(),'password':PasswordInput()}
+    def __init__ (self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update(
+            {'placeholder':'Nome de Usuário',
+            'class' : 'form-control'} )
+        self.fields['password'].widget.attrs.update(
+            {'placeholder':'Senha',
+             'class' : 'form-control',})
+        self.fields['email'].widget.attrs.update(
+            {'placeholder':'Email',
+             'class' : 'form-control',})
+        self.fields['first_name'].widget.attrs.update(
+            {'placeholder':'Nome',
+             'class' : 'form-control',})
+        self.fields['last_name'].widget.attrs.update(
+            {'placeholder':'Sobrenome',
+             'class' : 'form-control',})

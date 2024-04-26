@@ -4,13 +4,15 @@ from book.forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login as auth_login, authenticate
+from django.contrib.auth.hashers import make_password
 
 
 # Create your views here.
 def home(request):
     livro = Livro.objects.order_by('livro_id')
     context = {'livro':livro,
-               "UserForm": LoginForm()}
+               "LoginForm": LoginForm(),
+               "UsuarioForm": UsuarioForm()}
     return render(request, 'home.html', context)
 
 def autores(request):
@@ -68,3 +70,27 @@ def login(request):
             auth_login(request, user)
     context = {"LoginForm": LoginForm()}
     return render(request, 'login.html', context)
+
+def logout(request):
+    return render(request, 'logout.html')
+
+
+def cadastrar(request):
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+
+#para duas senhas diferentes 
+#if request.POST.get('password') != request.POST.get('password2'):
+#    form.add_error('password', 'Senhas diferentes')
+
+            form = form.save(commit = False)
+            form.password = make_password(form.password)
+            
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        form = UsuarioForm()
+    context = {"UsuarioForm": UsuarioForm()}
+
+    return render(request, 'cadastrar.html', context)
+ 

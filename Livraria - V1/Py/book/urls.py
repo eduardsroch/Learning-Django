@@ -14,4 +14,6 @@ urlpatterns = [
     path('carrinho/<id>', views.carrinho, name='carrinho'),
     path('busca/', views.busca, name='busca'),
     path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
+    path('cadastrar/', views.cadastrar, name='cadastrar'),
 ]
