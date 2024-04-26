@@ -32,9 +32,13 @@
 }
 </style>
 <h1 id="titulo">Login</h1><br>
+{% if user.is_authenticated %}
+BEM VINDO {{ user.username }}
+{% endif %}
 <div class="formulario">
 <form action="{% url 'form' %}" method="post">
     {% csrf_token %}
+    {{formlogin.errors}}
     <div class="row gap-2">
         <div class="col-6 col-md-4 col-xl-3">
             {{LoginForm.username}}
@@ -44,8 +48,9 @@
         </div>
     </div>
     <br>
-    <button type="button" class="btn btn-light">LOGIN</button>
-
+    <button type="button" class="btn btn-light">ENTRAR</button>
+    <button type="button" class="btn btn-light">CADASTRAR</button>
+ 
 </form>
 </div>
 

@@ -3,13 +3,14 @@ from book.models import Livro
 from book.forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth import login as auth_login, authenticate
 
 
 # Create your views here.
 def home(request):
     livro = Livro.objects.order_by('livro_id')
     context = {'livro':livro,
-               "UserForm": UserForm()}
+               "UserForm": LoginForm()}
     return render(request, 'home.html', context)
 
 def autores(request):
@@ -61,5 +62,9 @@ def busca(request):
     return render(request, 'busca.html', {'livros': livros})
 
 def login(request):
+    if request.method == 'POST':
+        user = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
+        if user:
+            auth_login(request, user)
     context = {"LoginForm": LoginForm()}
     return render(request, 'login.html', context)
