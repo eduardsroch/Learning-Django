@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from book.models import Livro 
-from book.forms import LivroForm
+from book.forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+
 
 # Create your views here.
 def home(request):
     livro = Livro.objects.order_by('livro_id')
-    context = {'livro':livro}
+    context = {'livro':livro,
+               "UserForm": UserForm()}
     return render(request, 'home.html', context)
 
 def autores(request):
@@ -57,3 +59,7 @@ def busca(request):
     Livro = request.GET.get('id', '')
     livros = Livro.objects.filter(livro_id=id)
     return render(request, 'busca.html', {'livros': livros})
+
+def login(request):
+    context = {"LoginForm": LoginForm()}
+    return render(request, 'login.html', context)

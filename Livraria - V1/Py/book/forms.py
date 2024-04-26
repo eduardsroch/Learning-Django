@@ -1,6 +1,7 @@
 from django import forms
 from book.models import Livro
 from django.forms.widgets import *
+from django.contrib.auth.models import User
 
 class LivroForm (forms.ModelForm):
     class Meta:
@@ -39,3 +40,18 @@ class LivroForm (forms.ModelForm):
             {'placeholder':'Gênero do Livro',
             'class' : 'form-control'}
         )
+
+class LoginForm (forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username','password']
+        widgets = {'password':PasswordInput()}
+    def __init__ (self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update(
+            {'placeholder':'Nome de Usuário',
+            'class' : 'form-control'} )
+        
+        self.fields['password'].widget.attrs.update(
+            {'placeholder':'Senha',
+             'class' : 'form-control',})
