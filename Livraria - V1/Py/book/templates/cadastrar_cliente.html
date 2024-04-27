@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<style>
+.formulario {
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    height: 100%;
+    margin-bottom: 50px;
+}
+
+#titulo {
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-family: 'Roboto';
+}
+</style>
+<h1 id="titulo">Cadastrar Cliente</h1><br>
+<div class="formulario">
+<form action="{% url 'cadastrar_cliente' %}" method="post">
+    {% csrf_token %}
+    <div class="row gap-2">
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClientForm.username}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClientForm.cpf}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClientForm.endereco}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClientForm.numero}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClientForm.complemento}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClientForm.bairro}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClienteForm.cidade}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClienteForm.estado}}
+        </div>        
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClienteForm.cep}}
+        </div>        
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClienteForm.telefone}}
+        </div>        
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClienteForm.celular}}
+        </div>        
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClienteForm.email}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClienteForm.password}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClienteForm.confirm_password}}
+        </div>
+        <div class="col-6 col-md-4 col-xl-3">
+            {{ClienteForm.como_soube}}
+        </div>
+        <div class="col-12 m-2">
+            <button class="btn btn-primary float-top">Cadastrar</button>
+        </div>
+    </div>
+</form>
+</div>
+
+{% endblock conteudo %}

@@ -93,4 +93,10 @@ def cadastrar(request):
     context = {"UsuarioForm": UsuarioForm()}
 
     return render(request, 'cadastrar.html', context)
- 
+
+def cadastrar_cliente(request):
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('cadastrar_cliente.html'))
