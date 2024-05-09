@@ -7,6 +7,7 @@ from book.models import Cidade
 from book.models import Estado
 from book.models import Cep
 from book.models import Endereco
+from book.models import Autor
 
 
 
@@ -18,6 +19,7 @@ admin.site.register(Estado)
 admin.site.register(Cep)
 admin.site.register(Endereco)
 admin.site.register(Livro)
+admin.site.register(Autor)
 
 
 

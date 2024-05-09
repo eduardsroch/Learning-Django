@@ -1,4 +1,5 @@
 from django.db import models
+from .bairro import Bairro
 
 class Bairro(models.Model):
     bairro_id = models.AutoField(primary_key=True)
@@ -19,9 +20,11 @@ class Cep(models.Model):
 class Endereco(models.Model):
     endereco_id = models.AutoField(primary_key=True)
     endereco = models.CharField(max_length=200)
+    bairro = models.ForeignKey(Bairro, on_delete=models.CASCADE)
+    cep = models.ForeignKey(Cep, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.nome
+        return self.endereco
 
 
 class Cidade(models.Model):
@@ -29,12 +32,20 @@ class Cidade(models.Model):
     cidade = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.nome
+        return self.cidade
 
 
 class Estado(models.Model):
     estado_id = models.AutoField(primary_key=True)
     estado = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.estado
+
+
+class Autor(models.Model):
+    autor_id = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=100)
 
     def __str__(self):
         return self.nome
@@ -43,12 +54,13 @@ class Estado(models.Model):
 class Livro(models.Model):
     livro_id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=200)
-    autor = models.CharField(max_length=100)
+    autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     editora = models.CharField(max_length=100)
     genero = models.CharField(max_length=50)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     imagem = models.TextField(max_length=5000)
     descricao = models.TextField(max_length=5000)
+
     def __str__(self):
         return self.titulo
 
